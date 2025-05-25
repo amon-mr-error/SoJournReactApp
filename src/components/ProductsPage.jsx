@@ -217,9 +217,12 @@ const ProductsPage = ({ user }) => {
 
   // Delete image
   const handleDeleteImage = async (filename) => {
+    const filename1 = filename.split("/").pop();
+    console.log("Deleting image with filename:", filename1);
+    
     setError(""); setMsg("");
     try {
-      await api.delete(`/api/localmarket/image/${filename}`);
+      await api.delete(`/api/localmarket/image/${filename1}`);
       setMsg("Image deleted!");
       fetchProducts();
     } catch (err) {
