@@ -70,18 +70,19 @@ const CategoriesPage = ({ user }) => {
   };
 
   return (
-    <div>
-      <h2>Categories</h2>
-      {msg && <div style={{ color: "green" }}>{msg}</div>}
-      {error && <div style={{ color: "red" }}>{error}</div>}
+    <div className="bg-white rounded-xl shadow p-8 mb-6">
+      <h2 className="text-2xl font-bold text-blue-900 mb-4">Categories</h2>
+      {msg && <div className="bg-green-100 text-green-700 px-4 py-2 rounded mb-2">{msg}</div>}
+      {error && <div className="bg-red-100 text-red-700 px-4 py-2 rounded mb-2">{error}</div>}
       {user.role === "admin" && (
-        <form onSubmit={editId ? handleUpdate : handleCreate}>
+        <form onSubmit={editId ? handleUpdate : handleCreate} className="flex gap-2 mb-4">
           <input
             type="text"
             value={editId ? editName : name}
             onChange={(e) => (editId ? setEditName(e.target.value) : setName(e.target.value))}
             placeholder="Name"
             required
+            className="rounded border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
           />
           <input
             type="text"
@@ -91,20 +92,23 @@ const CategoriesPage = ({ user }) => {
             }
             placeholder="Description"
             required
+            className="rounded border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
           />
-          <button type="submit">{editId ? "Update" : "Create"}</button>
-          {editId && <button onClick={() => setEditId(null)}>Cancel</button>}
+          <button type="submit" className="bg-blue-900 text-white px-4 py-2 rounded hover:bg-blue-800">{editId ? "Update" : "Create"}</button>
+          {editId && <button type="button" className="bg-gray-300 text-blue-900 px-4 py-2 rounded hover:bg-gray-400" onClick={() => setEditId(null)}>Cancel</button>}
         </form>
       )}
       <ul>
         {categories.map((cat) => (
-          <li key={cat._id || cat.id}>
-            <b>{cat.name}</b>: {cat.description}
+          <li key={cat._id || cat.id} className="flex items-center justify-between bg-blue-50 rounded px-4 py-2 mb-2">
+            <span>
+              <b>{cat.name}</b>: {cat.description}
+            </span>
             {user.role === "admin" && (
-              <>
-                <button onClick={() => handleEdit(cat)}>Edit</button>
-                <button onClick={() => handleDelete(cat._id || cat.id)}>Delete</button>
-              </>
+              <span>
+                <button className="bg-blue-900 text-white px-3 py-1 rounded mr-2 hover:bg-blue-700" onClick={() => handleEdit(cat)}>Edit</button>
+                <button className="bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700" onClick={() => handleDelete(cat._id || cat.id)}>Delete</button>
+              </span>
             )}
           </li>
         ))}
