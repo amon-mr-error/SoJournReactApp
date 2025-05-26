@@ -1,0 +1,41 @@
+Data Scientist JD
+
+Job Title: Data Scientist
+
+Location: Quantum Analytics, Metropolis
+
+Job Type: Full-time
+
+About Us:
+Quantum Analytics is a cutting-edge data science firm specializing in AI-driven solutions for businesses worldwide. We are seeking a passionate and skilled Data Scientist to join our dynamic team and work on transformative projects.
+
+Responsibilities:
+- Analyze large datasets to extract actionable insights and support business decision-making.
+- Develop and deploy machine learning models for predictive analytics and automation.
+- Collaborate with cross-functional teams to implement data-driven solutions.
+- Build and maintain data pipelines for efficient data processing.
+- Utilize data visualization tools to communicate findings effectively.
+- Stay up to date with the latest advancements in data science and AI.
+
+Requirements:
+- Bachelor's or Master’s degree in Data Science, Computer Science, Mathematics, or a related field.
+- 2+ years of experience in data science, machine learning, or statistical analysis.
+- Proficiency in Python, R, SQL, and machine learning libraries (TensorFlow, Scikit-learn, etc.).
+- Experience with big data technologies such as Spark, Hadoop, or cloud platforms (AWS, GCP, Azure).
+- Strong problem-solving skills and the ability to work independently.
+- Excellent communication and teamwork skills.
+
+Preferred Qualifications:
+- Experience with NLP, computer vision, or time series analysis.
+- Familiarity with A/B testing and experimentation techniques.
+- Knowledge of data engineering principles.
+
+Benefits:
+- Competitive salary and performance-based bonuses.
+- Flexible working hours and remote work options.
+- Opportunities for professional development and learning.
+- Health insurance and other employee benefits.
+
+How to Apply:
+Interested candidates can apply by sending their resume and a cover letter to careers@quantumanalytics.com with the subject line "Application for Data Scientist Position."
+

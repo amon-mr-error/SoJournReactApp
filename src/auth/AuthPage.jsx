@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import api, { setToken, handleApiError } from "../api";
 import logo from './logo.png';
+import { useNavigate } from "react-router-dom";
 
 const AuthPage = ({ onAuth }) => {
   const [mode, setMode] = useState("login"); // login | register
@@ -12,6 +13,7 @@ const AuthPage = ({ onAuth }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [info, setInfo] = useState("");
+  const navigate = useNavigate();
 
   const normalizeMobile = (m) =>
     m.replace(/[^0-9+]/g, "").replace(/^0+/, "");
@@ -48,6 +50,9 @@ const AuthPage = ({ onAuth }) => {
       setToken(res.data.token);
       setInfo("Login successful! Redirecting...");
       if (onAuth) onAuth(res.data.user);
+      setTimeout(() => {
+        navigate("/dashboard");
+      }, 1000);      
     } catch (err) {
       setError(handleApiError(err));
     }
@@ -83,6 +88,9 @@ const AuthPage = ({ onAuth }) => {
       setToken(res.data.token);
       setInfo("Registration successful! Redirecting...");
       if (onAuth) onAuth();
+      setTimeout(() => {
+        navigate("/dashboard");
+      }, 1000);
     } catch (err) {
       setError(handleApiError(err));
     }
