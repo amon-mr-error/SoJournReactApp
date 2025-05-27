@@ -102,15 +102,8 @@ const Navbar = ( { onLogin }) => {
             >
               Testimonials
             </a> */}
-            <a 
-              href="#download" 
-              className="btn-primary inline-block"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Download Now
-            </a>
             <button
-              className="w-full mt-2 px-4 py-2 rounded-lg border border-sojourn-green text-sojourn-green font-semibold hover:bg-sojourn-green hover:text-white transition"
+              className='block bg-sojourn-green text-sojourn-cream btn-secondary px-4'
               onClick={() => {
                 setIsMenuOpen(false);
                 onLogin();
@@ -118,6 +111,14 @@ const Navbar = ( { onLogin }) => {
             >
               Login
             </button>
+            <a 
+              href="#download" 
+              className="btn-primary inline-block"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Download Now
+            </a>
+            
             
           </div>
         )}

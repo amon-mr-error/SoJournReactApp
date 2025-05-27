@@ -42,7 +42,7 @@ const LandingPage = ({ onLogin, onGetStarted }) => (
   <div className="App">
     <Navbar onLogin={onLogin} onGetStarted={onGetStarted} />
     <Hero onGetStarted={onGetStarted} />
-    <div className="container mx-auto px-4 md:px-6">
+    <div className="max-w-full">
       <Features />
       <Destinations />
       <Download />
