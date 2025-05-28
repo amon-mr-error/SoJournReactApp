@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import api, { setToken, handleApiError } from "../api";
-import logo from './logo.png';
+import logo from "./logo.png";
 import { useNavigate } from "react-router-dom";
 
 const AuthPage = ({ onAuth }) => {
@@ -15,13 +15,14 @@ const AuthPage = ({ onAuth }) => {
   const [info, setInfo] = useState("");
   const navigate = useNavigate();
 
-  const normalizeMobile = (m) =>
-    m.replace(/[^0-9+]/g, "").replace(/^0+/, "");
+  const normalizeMobile = (m) => m.replace(/[^0-9+]/g, "").replace(/^0+/, "");
 
   // Login flow
   const handleLoginMobile = async (e) => {
     e.preventDefault();
-    setError(""); setInfo(""); setLoading(true);
+    setError("");
+    setInfo("");
+    setLoading(true);
     try {
       await api.post("/api/auth/mobile", { mobile: normalizeMobile(mobile) });
       setStep(2);
@@ -30,7 +31,11 @@ const AuthPage = ({ onAuth }) => {
       if (err.response?.data?.suggestedEndpoint === "/api/auth/register") {
         setInfo("Mobile not registered. Redirecting to registration...");
         setTimeout(() => {
-          setMode("register"); setStep(1); setError(""); setInfo(""); setOtp("");
+          setMode("register");
+          setStep(1);
+          setError("");
+          setInfo("");
+          setOtp("");
         }, 1500);
       } else {
         setError(handleApiError(err));
@@ -41,7 +46,9 @@ const AuthPage = ({ onAuth }) => {
 
   const handleLoginOtp = async (e) => {
     e.preventDefault();
-    setError(""); setInfo(""); setLoading(true);
+    setError("");
+    setInfo("");
+    setLoading(true);
     try {
       const res = await api.post("/api/auth/verify", {
         mobile: normalizeMobile(mobile),
@@ -50,9 +57,19 @@ const AuthPage = ({ onAuth }) => {
       setToken(res.data.token);
       setInfo("Login successful! Redirecting...");
       if (onAuth) onAuth(res.data.user);
+      const role = res.data.user?.role;
       setTimeout(() => {
-        navigate("/dashboard");
-      }, 1000);      
+        if (role === "vendor") {
+          navigate("/localmarket/dashboard");
+        } else if (role === "adventurer") {
+          console.log("adventurer");
+          navigate("/adventure/dashboard");
+        } else if (role === "admin") {
+          navigate("/admin/select-role");
+        } else {
+          navigate("/dashboard"); // fallback
+        }
+      }, 1000);
     } catch (err) {
       setError(handleApiError(err));
     }
@@ -62,7 +79,9 @@ const AuthPage = ({ onAuth }) => {
   // Registration flow
   const handleRegisterMobile = async (e) => {
     e.preventDefault();
-    setError(""); setInfo(""); setLoading(true);
+    setError("");
+    setInfo("");
+    setLoading(true);
     try {
       await api.post("/api/auth/register", {
         mobile: normalizeMobile(mobile),
@@ -79,7 +98,9 @@ const AuthPage = ({ onAuth }) => {
 
   const handleRegisterOtp = async (e) => {
     e.preventDefault();
-    setError(""); setInfo(""); setLoading(true);
+    setError("");
+    setInfo("");
+    setLoading(true);
     try {
       const res = await api.post("/api/auth/register/verify", {
         mobile: normalizeMobile(mobile),
@@ -87,9 +108,18 @@ const AuthPage = ({ onAuth }) => {
       });
       setToken(res.data.token);
       setInfo("Registration successful! Redirecting...");
-      if (onAuth) onAuth();
+      if (onAuth) onAuth(res.data.user);
+      const role = res.data.user?.role;
       setTimeout(() => {
-        navigate("/dashboard");
+        if (role === "vendor") {
+          navigate("/localmarket/dashboard");
+        } else if (role === "adventurer") {
+          navigate("/adventure/dashboard");
+        } else if (role === "admin") {
+          navigate("/admin/select-role");
+        } else {
+          navigate("/dashboard"); // fallback
+        }
       }, 1000);
     } catch (err) {
       setError(handleApiError(err));
@@ -98,33 +128,33 @@ const AuthPage = ({ onAuth }) => {
   };
 
   return (
-    <div className="auth-bg">
-      <div className="auth-container">
-        <div className="auth-card">
-          <div className="auth-logo">
+    <div className='auth-bg'>
+      <div className='auth-container'>
+        <div className='auth-card'>
+          <div className='auth-logo'>
             <img
               src={logo}
               style={{ width: "48px", height: "48px", borderRadius: "15%" }}
             />
-            <span className="brand-title">SoJourn Express</span>
+            <span className='brand-title'>SoJourn Express</span>
           </div>
-          {error && <div className="auth-error">{error}</div>}
-          {info && <div className="auth-info">{info}</div>}
+          {error && <div className='auth-error'>{error}</div>}
+          {info && <div className='auth-info'>{info}</div>}
           {mode === "login" ? (
             <form
-              className="auth-form"
+              className='auth-form'
               onSubmit={step === 1 ? handleLoginMobile : handleLoginOtp}
-              autoComplete="off"
+              autoComplete='off'
             >
               <h2>Sign In</h2>
               {step === 1 && (
                 <label>
                   Mobile Number
                   <input
-                    type="tel"
+                    type='tel'
                     value={mobile}
                     onChange={(e) => setMobile(e.target.value)}
-                    placeholder="e.g. +911234567890"
+                    placeholder='e.g. +911234567890'
                     required
                     autoFocus
                     disabled={loading}
@@ -135,10 +165,10 @@ const AuthPage = ({ onAuth }) => {
                 <label>
                   OTP
                   <input
-                    type="text"
+                    type='text'
                     value={otp}
                     onChange={(e) => setOtp(e.target.value)}
-                    placeholder="Enter OTP"
+                    placeholder='Enter OTP'
                     required
                     autoFocus
                     maxLength={6}
@@ -147,18 +177,28 @@ const AuthPage = ({ onAuth }) => {
                 </label>
               )}
               <button
-                type="submit"
-                className="auth-btn"
-                disabled={loading || (step === 1 && !mobile) || (step === 2 && !otp)}
+                type='submit'
+                className='auth-btn'
+                disabled={
+                  loading || (step === 1 && !mobile) || (step === 2 && !otp)
+                }
               >
-                {loading ? "Processing..." : step === 1 ? "Send OTP" : "Verify OTP"}
+                {loading
+                  ? "Processing..."
+                  : step === 1
+                  ? "Send OTP"
+                  : "Verify OTP"}
               </button>
-              <div className="auth-switch">
+              <div className='auth-switch'>
                 Not registered?{" "}
                 <span
-                  className="auth-link"
+                  className='auth-link'
                   onClick={() => {
-                    setMode("register"); setStep(1); setError(""); setInfo(""); setOtp("");
+                    setMode("register");
+                    setStep(1);
+                    setError("");
+                    setInfo("");
+                    setOtp("");
                   }}
                 >
                   Create an account
@@ -167,9 +207,9 @@ const AuthPage = ({ onAuth }) => {
             </form>
           ) : (
             <form
-              className="auth-form"
+              className='auth-form'
               onSubmit={step === 1 ? handleRegisterMobile : handleRegisterOtp}
-              autoComplete="off"
+              autoComplete='off'
             >
               <h2>Register</h2>
               {step === 1 && (
@@ -177,10 +217,10 @@ const AuthPage = ({ onAuth }) => {
                   <label>
                     Name
                     <input
-                      type="text"
+                      type='text'
                       value={name}
                       onChange={(e) => setName(e.target.value)}
-                      placeholder="Full Name"
+                      placeholder='Full Name'
                       required
                       autoFocus
                       disabled={loading}
@@ -189,10 +229,10 @@ const AuthPage = ({ onAuth }) => {
                   <label>
                     Mobile Number
                     <input
-                      type="tel"
+                      type='tel'
                       value={mobile}
                       onChange={(e) => setMobile(e.target.value)}
-                      placeholder="e.g. +911234567890"
+                      placeholder='e.g. +911234567890'
                       required
                       disabled={loading}
                     />
@@ -200,10 +240,10 @@ const AuthPage = ({ onAuth }) => {
                   <label>
                     Address
                     <input
-                      type="text"
+                      type='text'
                       value={address}
                       onChange={(e) => setAddress(e.target.value)}
-                      placeholder="Your Address"
+                      placeholder='Your Address'
                       required
                       disabled={loading}
                     />
@@ -214,10 +254,10 @@ const AuthPage = ({ onAuth }) => {
                 <label>
                   OTP
                   <input
-                    type="text"
+                    type='text'
                     value={otp}
                     onChange={(e) => setOtp(e.target.value)}
-                    placeholder="Enter OTP"
+                    placeholder='Enter OTP'
                     required
                     autoFocus
                     maxLength={6}
@@ -226,22 +266,30 @@ const AuthPage = ({ onAuth }) => {
                 </label>
               )}
               <button
-                type="submit"
-                className="auth-btn"
+                type='submit'
+                className='auth-btn'
                 disabled={
                   loading ||
                   (step === 1 && (!mobile || !name || !address)) ||
                   (step === 2 && !otp)
                 }
               >
-                {loading ? "Processing..." : step === 1 ? "Register" : "Verify OTP"}
+                {loading
+                  ? "Processing..."
+                  : step === 1
+                  ? "Register"
+                  : "Verify OTP"}
               </button>
-              <div className="auth-switch">
+              <div className='auth-switch'>
                 Already have an account?{" "}
                 <span
-                  className="auth-link"
+                  className='auth-link'
                   onClick={() => {
-                    setMode("login"); setStep(1); setError(""); setInfo(""); setOtp("");
+                    setMode("login");
+                    setStep(1);
+                    setError("");
+                    setInfo("");
+                    setOtp("");
                   }}
                 >
                   Sign in
