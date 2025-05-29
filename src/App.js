@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
 import AuthPage from "./auth/AuthPage";
 import LandingPage from "./LandingPage";
 import LocalMarketLayout from "./localmarket/LocalMarketLayout";
 import AdventureLayout from "./adventure/AdventureLayout";
+import { AppProvider, useAppContext } from "./AppContext";
 import { getToken, removeToken } from "./api";
 
 const ProtectedRoute = ({ user, children }) => {
@@ -11,26 +12,8 @@ const ProtectedRoute = ({ user, children }) => {
   return children;
 };
 
-const App = () => {
-  const [user, setUser] = useState(() => {
-    const stored = localStorage.getItem("user");
-    return stored ? JSON.parse(stored) : null;
-  });
-  const navigate = useNavigate();
-
-  const handleAuth = (userObj) => {
-    const u = userObj || { role: "user" };
-    setUser(u);
-    localStorage.setItem("user", JSON.stringify(u));
-  };
-
-  const handleLogout = () => {
-    removeToken();
-    localStorage.removeItem("user");
-    setUser(null);
-    window.location.href = "/";
-  };
-
+const AppRoutes = () => {
+  const { user, handleAuth, handleLogout } = useAppContext();
   return (
     <Routes>
       <Route
@@ -96,6 +79,12 @@ const AdminRoleSelect = () => (
       </a>
     </div>
   </div>
+);
+
+const App = () => (
+  <AppProvider>
+    <AppRoutes />
+  </AppProvider>
 );
 
 export default App;

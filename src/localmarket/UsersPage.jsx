@@ -82,6 +82,7 @@ const UsersPage = ({ user }) => {
                     <option value="user">User</option>
                     <option value="vendor">Vendor</option>
                     <option value="admin">Admin</option>
+                    <option value="adventurer">Adventurer</option>
                   </select>
                 </td>
                 <td className="py-4 px-5">

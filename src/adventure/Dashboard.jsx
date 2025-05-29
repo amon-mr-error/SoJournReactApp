@@ -1,11 +1,18 @@
 import React from "react";
+import { useAppContext } from "../AppContext";
 
 const AdventureDashboard = () => {
+  const { user } = useAppContext();
+
   return (
-    <div style={{ padding: "2rem" }}>
-      <h1>Adventure Dashboard</h1>
+    <div>
+      <h1 className="text-2xl font-bold mb-2">Adventure Dashboard</h1>
       <p>
-        Welcome, adventurer! Here you can explore your journeys and adventures.
+        {user?.role === "admin"
+          ? "Welcome, admin! You can manage all adventures and categories."
+          : user?.role === "adventurer"
+          ? "Welcome, adventurer! Manage your adventures or explore new ones."
+          : "Welcome! Explore adventures."}
       </p>
     </div>
   );
