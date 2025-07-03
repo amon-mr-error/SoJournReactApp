@@ -6,7 +6,7 @@ import {
   MailOutlined,
   HomeOutlined,
 } from "@ant-design/icons";
-import "antd/dist/reset.css";
+import "antd/dist/antd.css";
 
 const RenterDashboard = ({ user }) => {
   if (!user) return null;
