@@ -4,6 +4,7 @@ import AuthPage from "./auth/AuthPage";
 import LandingPage from "./LandingPage";
 import LocalMarketLayout from "./localmarket/LocalMarketLayout";
 import AdventureLayout from "./adventure/AdventureLayout";
+import RenterLayout from "./renter/RenterLayout";
 import { AppProvider, useAppContext } from "./AppContext";
 import { getToken, removeToken } from "./api";
 
@@ -43,43 +44,69 @@ const AppRoutes = () => {
           </ProtectedRoute>
         }
       />
+      <Route
+        path='/renter/*'
+        element={
+          <ProtectedRoute user={user}>
+            <RenterLayout user={user} />
+          </ProtectedRoute>
+        }
+      />
       <Route path='*' element={<Navigate to='/login' />} />
     </Routes>
   );
 };
 
-const AdminRoleSelect = () => (
-  <div style={{ padding: "2rem" }}>
-    <h1>Admin Role Selection</h1>
-    <p>Choose which dashboard to access:</p>
-    <div style={{ display: "flex", gap: "1rem", marginTop: "1.5rem" }}>
-      <a
-        href='/localmarket/dashboard'
-        style={{
-          padding: "1rem 2rem",
-          background: "#2c5364",
-          color: "#fff",
-          borderRadius: "8px",
-          textDecoration: "none",
-        }}
-      >
-        Vendor Dashboard
-      </a>
-      <a
-        href='/adventure/dashboard'
-        style={{
-          padding: "1rem 2rem",
-          background: "#0f2027",
-          color: "#fff",
-          borderRadius: "8px",
-          textDecoration: "none",
-        }}
-      >
-        Adventure Dashboard
-      </a>
+const AdminRoleSelect = () => {
+  const navigate = useNavigate();
+  return (
+    <div style={{ padding: "2rem" }}>
+      <h1>Admin Role Selection</h1>
+      <p>Choose which dashboard to access:</p>
+      <div style={{ display: "flex", gap: "1rem", marginTop: "1.5rem" }}>
+        <button
+          onClick={() => navigate("/localmarket/dashboard")}
+          style={{
+            padding: "1rem 2rem",
+            background: "#2c5364",
+            color: "#fff",
+            borderRadius: "8px",
+            border: "none",
+            cursor: "pointer",
+          }}
+        >
+          Vendor Dashboard
+        </button>
+        <button
+          onClick={() => navigate("/adventure/dashboard")}
+          style={{
+            padding: "1rem 2rem",
+            background: "#0f2027",
+            color: "#fff",
+            borderRadius: "8px",
+            border: "none",
+            cursor: "pointer",
+          }}
+        >
+          Adventure Dashboard
+        </button>
+        <button
+          onClick={() => navigate("/renter/dashboard")}
+          style={{
+            padding: "1rem 2rem",
+            background: "#1e3c72",
+            color: "#fff",
+            borderRadius: "8px",
+            border: "none",
+            cursor: "pointer",
+          }}
+        >
+          Renter Dashboard
+        </button>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 const App = () => (
   <AppProvider>

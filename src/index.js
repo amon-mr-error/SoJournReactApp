@@ -22,7 +22,7 @@ const root = createRoot(container);
 
 root.render(
   <BrowserRouter>
-    {/* <App /> */}
-    <h1>Hello World</h1>
+    <App />
+    {/* <h1>Hello World</h1> */}
   </BrowserRouter>
 );

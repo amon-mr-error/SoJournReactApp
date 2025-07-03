@@ -67,6 +67,8 @@ const AuthPage = ({ onAuth }) => {
         } else if (role === "adventurer") {
           console.log("adventurer");
           navigate("/adventure/dashboard");
+        } else if (role === "renter") {
+          navigate("/renter/dashboard");
         } else if (role === "admin") {
           navigate("/admin/select-role");
         } else {
@@ -130,6 +132,8 @@ const AuthPage = ({ onAuth }) => {
           navigate("/localmarket/dashboard");
         } else if (role === "adventurer") {
           navigate("/adventure/dashboard");
+        } else if (role === "renter") {
+          navigate("/renter/dashboard");
         } else if (role === "admin") {
           navigate("/admin/select-role");
         } else {
