@@ -14,11 +14,9 @@ const OrdersPage = ({ user }) => {
   const [selected, setSelected] = useState(null);
   const [msg, setMsg] = useState("");
   const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
 
   // Fetch orders based on role
   const fetchOrders = async () => {
-    setLoading(true);
     setError(""); setMsg("");
     try {
       let url = "/api/orders/my-orders";
@@ -29,10 +27,11 @@ const OrdersPage = ({ user }) => {
     } catch (err) {
       setError(handleApiError(err));
     }
-    setLoading(false);
   };
 
-  useEffect(() => { fetchOrders(); }, [user]);
+  useEffect(() => {
+    fetchOrders();
+  }, [fetchOrders]);
 
   // Update order status (admin/vendor)
   const handleStatus = async (id, status) => {

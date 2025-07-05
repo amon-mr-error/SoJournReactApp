@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState } from "react";
-import { getToken, removeToken } from "./api";
+import { removeToken } from "./api";
 
 const AppContext = createContext();
 

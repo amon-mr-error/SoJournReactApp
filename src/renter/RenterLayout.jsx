@@ -1,7 +1,6 @@
 import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import RenterDashboard from "./Dashboard";
-import RenterBookingsPage from "./bookings/RenterBookingsPage";
 import AdminRentalBookingsPage from "./bookings/AdminRentalBookingsPage";
 import RenterNavBar from "./RenterNavBar";
 import MyRentalsPage from "./MyRentalsPage";

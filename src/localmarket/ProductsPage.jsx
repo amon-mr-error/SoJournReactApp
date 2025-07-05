@@ -132,7 +132,6 @@ const ProductsPage = ({ user }) => {
   };
 
   // Create or update product
-// ...existing code...
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError(""); setMsg(""); setLoading(true);
@@ -200,7 +199,6 @@ const ProductsPage = ({ user }) => {
     }
     setLoading(false);
   };
-// ...existing code...
 
   // Delete product
   const handleDelete = async (id) => {

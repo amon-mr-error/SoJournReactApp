@@ -154,6 +154,7 @@ const AuthPage = ({ onAuth }) => {
             <img
               src={logo}
               style={{ width: "48px", height: "48px", borderRadius: "15%" }}
+              alt="Auth page"
             />
             <span className='brand-title'>SoJourn</span>
           </div>

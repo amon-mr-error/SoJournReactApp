@@ -6,7 +6,7 @@ import LocalMarketLayout from "./localmarket/LocalMarketLayout";
 import AdventureLayout from "./adventure/AdventureLayout";
 import RenterLayout from "./renter/RenterLayout";
 import { AppProvider, useAppContext } from "./AppContext";
-import { getToken, removeToken } from "./api";
+import { getToken } from "./api";
 
 const ProtectedRoute = ({ user, children }) => {
   if (!getToken() || !user) return <Navigate to='/login' replace />;

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import api from "../api";
-import { Table, Tag, Spin, message } from "antd";
+import { Table, Tag, message } from "antd";
 import { Link } from "react-router-dom";
 
 const MyRentalsPage = ({ user }) => {

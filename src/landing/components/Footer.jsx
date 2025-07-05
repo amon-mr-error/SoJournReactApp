@@ -18,16 +18,16 @@ const Footer = () => {
               Discover authentic experiences with safety and confidence.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
+              <a href="/">
                 <FiFacebook className="w-5 h-5" />
               </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
+              <a href="/">
                 <FiTwitter className="w-5 h-5" />
               </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
+              <a href="/">
                 <FiInstagram className="w-5 h-5" />
               </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
+              <a href="/">
                 <FiLinkedin className="w-5 h-5" />
               </a>
             </div>
@@ -70,9 +70,9 @@ const Footer = () => {
             © 2024 SoJourn. All rights reserved.
           </p>
           <div className="flex space-x-6 mt-4 md:mt-0">
-            <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors">Privacy Policy</a>
-            <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors">Terms of Service</a>
-            <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors">Support</a>
+            <a href="/">Privacy Policy</a>
+            <a href="/">Terms of Service</a>
+            <a href="/">Support</a>
           </div>
         </div>
       </div>

@@ -15,7 +15,6 @@ const AdventureBookingsPage = () => {
   const [bookings, setBookings] = useState([]);
   const [msg, setMsg] = useState("");
   const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     fetchBookings();
@@ -23,7 +22,6 @@ const AdventureBookingsPage = () => {
   }, [adventureId]);
 
   const fetchBookings = async () => {
-    setLoading(true);
     setError(""); setMsg("");
     try {
       const res = await api.get(`/api/adventures/orders/adventure/${adventureId}/bookings`);
@@ -32,7 +30,6 @@ const AdventureBookingsPage = () => {
       setError(handleApiError(err));
       setBookings([]);
     }
-    setLoading(false);
   };
 
   const handleStatus = async (bookingId, status) => {

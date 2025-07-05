@@ -13,13 +13,6 @@ import {
 import { SearchOutlined, ReloadOutlined } from "@ant-design/icons";
 import "antd/dist/antd.css";
 
-const statusColors = {
-  pending: "orange",
-  confirmed: "blue",
-  completed: "green",
-  cancelled: "red",
-};
-
 const paymentColors = {
   pending: "orange",
   paid: "green",

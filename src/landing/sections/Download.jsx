@@ -54,7 +54,7 @@ const Download = () => {
             transition={{ duration: 0.6, delay: 0.3 }}
           >
             <a
-              href='#'
+              href="/"
               className='bg-white text-sojourn-green px-8 py-4 rounded-lg font-medium hover:bg-opacity-90 transition-all shadow-md flex items-center justify-center group'
             >
               <svg
@@ -71,7 +71,7 @@ const Download = () => {
             </a>
 
             <a
-              href='#'
+              href="/"
               className='bg-white text-sojourn-green px-8 py-4 rounded-lg font-medium hover:bg-opacity-90 transition-all shadow-md flex items-center justify-center group'
             >
               <svg

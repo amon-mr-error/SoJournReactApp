@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useCallback, useEffect, useState, useRef } from "react";
 import api, { handleApiError } from "../api";
 import { useAppContext } from "../AppContext";
 
@@ -38,12 +38,7 @@ const AdventuresPage = () => {
   const fileInputRef = useRef();
   const multiFileInputRef = useRef();
 
-  useEffect(() => {
-    fetchAdventures();
-    fetchCategories();
-  }, []);
-
-  const fetchAdventures = async () => {
+  const fetchAdventures = useCallback(async () => {
     setLoading(true);
     setError(""); setMsg("");
     try {
@@ -62,7 +57,12 @@ const AdventuresPage = () => {
       setAdventures([]);
     }
     setLoading(false);
-  };
+  }, [user?.role]);
+
+  useEffect(() => {
+    fetchAdventures();
+    fetchCategories();
+  }, [fetchAdventures]);
 
   const fetchCategories = async () => {
     try {
@@ -74,7 +74,7 @@ const AdventuresPage = () => {
   };
 
   const handleChange = (e) => {
-    const { name, value, type, files } = e.target;
+    const { name, value, files } = e.target;
     if (name === "image") {
       setForm((f) => ({ ...f, image: files[0] }));
     } else if (name === "multipleImages") {
