@@ -155,7 +155,7 @@ const AuthPage = ({ onAuth }) => {
               src={logo}
               style={{ width: "48px", height: "48px", borderRadius: "15%" }}
             />
-            <span className='brand-title'>SoJourn Express</span>
+            <span className='brand-title'>SoJourn</span>
           </div>
           {error && <div className='auth-error'>{error}</div>}
           {info && <div className='auth-info'>{info}</div>}

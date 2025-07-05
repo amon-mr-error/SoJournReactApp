@@ -35,7 +35,7 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            Presenting the SoJourn App — a digital guide that simplifies
+            Presenting the SoJourn App, a digital guide that simplifies
             travel, connects you to authentic experiences and lets you explore
             Jammu and Kashmir without worries.
           </motion.p>
