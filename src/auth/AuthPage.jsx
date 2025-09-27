@@ -154,7 +154,7 @@ const AuthPage = ({ onAuth }) => {
             <img
               src={logo}
               style={{ width: "48px", height: "48px", borderRadius: "15%" }}
-              alt="Auth page"
+              alt='Auth page'
             />
             <span className='brand-title'>SoJourn</span>
           </div>
@@ -548,7 +548,7 @@ const AuthPage = ({ onAuth }) => {
                 <br />
                 For questions or complaints, contact us at:
                 <br />
-                Email: support@sojourntourism.in
+                Email: sojournhelpdesk@gmail.com
               </li>
             </ol>
             <h3 style={{ marginTop: 24 }}>13. Partnership Terms</h3>

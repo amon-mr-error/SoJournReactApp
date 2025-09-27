@@ -5,6 +5,8 @@ import LandingPage from "./LandingPage";
 import LocalMarketLayout from "./localmarket/LocalMarketLayout";
 import AdventureLayout from "./adventure/AdventureLayout";
 import RenterLayout from "./renter/RenterLayout";
+import TermsOfService from "./pages/TermsOfService";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
 import { AppProvider, useAppContext } from "./AppContext";
 import { getToken } from "./api";
 
@@ -27,6 +29,8 @@ const AppRoutes = () => {
         }
       />
       <Route path='/login' element={<AuthPage onAuth={handleAuth} />} />
+      <Route path='/terms-of-service' element={<TermsOfService />} />
+      <Route path='/privacy-policy' element={<PrivacyPolicy />} />
       <Route path='/admin/select-role' element={<AdminRoleSelect />} />
       <Route
         path='/localmarket/*'
