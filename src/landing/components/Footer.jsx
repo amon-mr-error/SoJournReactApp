@@ -28,59 +28,23 @@ const Footer = () => {
               confidence.
             </p>
             <div className='flex space-x-4'>
-              <a href='/'>
+              <a href='https://www.facebook.com/share/1CuwQFBzar/?mibextid=wwXIfr'>
                 <FiFacebook className='w-5 h-5' />
               </a>
-              <a href='/'>
+              <a href='https://x.com/shoqeen_n?s=21'>
                 <FiTwitter className='w-5 h-5' />
               </a>
-              <a href='/'>
+              <a href='https://www.instagram.com/go.sojourn?igsh=Mjc3dTJ5bzJ0bWo2&utm_source=qr'>
                 <FiInstagram className='w-5 h-5' />
               </a>
-              <a href='/'>
+              <a href='https://www.linkedin.com/in/shoqeen-nabi-70b23527b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app'>
                 <FiLinkedin className='w-5 h-5' />
               </a>
             </div>
           </div>
 
           {/* Quick Links */}
-          <div>
-            <h3 className='text-lg font-semibold mb-4'>Quick Links</h3>
-            <ul className='space-y-2'>
-              <li>
-                <a
-                  href='#features'
-                  className='text-gray-300 hover:text-white transition-colors'
-                >
-                  Features
-                </a>
-              </li>
-              <li>
-                <a
-                  href='#destinations'
-                  className='text-gray-300 hover:text-white transition-colors'
-                >
-                  Destinations
-                </a>
-              </li>
-              <li>
-                <a
-                  href='#experience'
-                  className='text-gray-300 hover:text-white transition-colors'
-                >
-                  App Experience
-                </a>
-              </li>
-              <li>
-                <a
-                  href='#download'
-                  className='text-gray-300 hover:text-white transition-colors'
-                >
-                  Download
-                </a>
-              </li>
-            </ul>
-          </div>
+          <div></div>
 
           {/* Contact Info */}
           <div>
